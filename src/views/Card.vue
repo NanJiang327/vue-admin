@@ -3,16 +3,21 @@
         <content-header
             menuName="导航一">
         </content-header>
+        <el-row :gutter="10">
+            <el-col :span="8" v-for="i in 5" :key="i">
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                        <span>卡片名称</span>
+                        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                    </div>
+                    <div v-for="o in 4" :key="o" class="text item">
+                        {{'列表内容 ' + o }}
+                    </div>
+                </el-card>
+            </el-col>
+        </el-row>
 
-        <el-card class="box-card">
-            <div slot="header" class="clearfix">
-                <span>卡片名称</span>
-                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-                {{'列表内容 ' + o }}
-            </div>
-        </el-card>
+        
     </section>
 </template>
 
@@ -173,6 +178,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.el-col{margin-bottom: 10px;}
 </style>
 

@@ -19,7 +19,9 @@
 export default {
     methods: {
         dropdownChange (name) {
-            log(name)
+            if (name === '退出') {
+                this.$router.push('/login');
+            }
         }
     }
 }

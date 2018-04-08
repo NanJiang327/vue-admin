@@ -1,54 +1,16 @@
 <template>
     <aside>
-        <!-- <el-menu default-active="1-4-1" 
-            class="el-menu-vertical-demo" 
-            @open="handleOpen" 
-            @close="handleClose" 
-            :collapse="false"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b">
-            <el-submenu index="1">
-                <template slot="title">
-                <i class="el-icon-location"></i>
-                <span slot="title">导航一</span>
-                </template>
-                <el-menu-item-group>
-                <span slot="title">分组一</span>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                <span slot="title">选项4</span>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
-            </el-submenu>
-            <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item index="3" disabled>
-                <i class="el-icon-document"></i>
-                <span slot="title">导航三</span>
-            </el-menu-item>
-            <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航四</span>
-            </el-menu-item>
-        </el-menu> -->
         <el-menu
-            @open="handleOpen"
-            @close="handleClose"
+            :default-openeds="['0']"
+            :default-active="defaultActive"
             router
+            unique-opened
             background-color="#545c64"
             text-color="#fff">
             <el-submenu 
                 v-for="(menu, index) in menuList"
                 :key="index"
-                :index="(index+1).toString()">
+                :index="(index).toString()">
                 <template slot="title">
                     <i :class="menu.titleClass"></i>
                     <span v-text="menu.title"></span>
@@ -58,9 +20,10 @@
                     <el-menu-item 
                         v-for="(menuC, indexC) in menu.children"
                         :key="indexC"
+                        :route="menuC.router"
                         :index="menuC.router"
                         v-text="menuC.name">
-                        </el-menu-item>
+                    </el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
         </el-menu>
@@ -110,16 +73,14 @@ export default {
                         }
                     ]
                 }
-            ]
+            ],
+            defaultActive: '/table'
         }
     },
     methods: {
-        handleOpen (key, keyPath) {
-            log(key, keyPath);
-        },
-        handleClose (key, keyPath) {
-            log(key, keyPath);
-        }
+    },
+    mounted () {
+        this.defaultActive = this.$route.fullPath;
     }
 }
 </script>
@@ -128,6 +89,9 @@ export default {
 $background: #545c64;
 aside{
     height: 100%; position: fixed; top: 0; left: 0; padding-top: 40px; background: $background; width: 200px; text-align: left;
+    .el-menu-item{
+        padding-left: 55px!important
+    }
 }
 .el-menu{
     border-color: $background;
