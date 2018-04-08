@@ -2,6 +2,10 @@
 
 > A Vue.js project
 
+## 演示
+
+[查看效果](http://lanourteam.com/vueAdmin)
+
 ## Build Setup
 
 ``` bash
