@@ -4,7 +4,7 @@
 
 ## 演示
 
-[查看效果](http://lanourteam.com/vueAdmin)
+[查看效果](http://www.lanourteam.com/vueAdmin)
 
 ## Build Setup
 
