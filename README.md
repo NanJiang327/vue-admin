@@ -1,6 +1,6 @@
 # vue-admin
 
-> A Vue.js project
+> A Vue+element 后台模板
 
 ## 演示
 
