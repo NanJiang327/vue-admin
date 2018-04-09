@@ -2,7 +2,7 @@
     <aside
         :class="{'close': !isSidebarOpen}">
         <el-menu
-            :default-openeds="['0']"
+            :default-openeds="defaultOpeneds"
             :default-active="defaultActive"
             router
             unique-opened
@@ -78,7 +78,8 @@ export default {
                     ]
                 }
             ],
-            defaultActive: '/table'
+            defaultActive: '/table',
+            defaultOpeneds: [ '0' ]
         }
     },
     methods: {
@@ -90,7 +91,13 @@ export default {
     },
     mounted () {
         this.defaultActive = this.$route.fullPath;
-        log(this)
+        this.menuList.forEach((i, index) => {
+            i.children.forEach(j => {
+                if (j.router === this.$route.fullPath) {
+                    this.defaultOpeneds = [ index.toString() ]
+                }
+            })
+        })
     }
 }
 </script>

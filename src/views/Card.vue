@@ -16,8 +16,6 @@
                 </el-card>
             </el-col>
         </el-row>
-
-        
     </section>
 </template>
 

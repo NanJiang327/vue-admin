@@ -6,6 +6,13 @@
 
 [查看效果](http://www.lanourteam.com/vueAdmin)
 
+## 功能点
+
+> 基础架构
+> 请求封装
+> tableTh修改
+> 项目常用技巧
+
 ## Build Setup
 
 ``` bash
