@@ -1,10 +1,12 @@
 <template>
-    <aside>
+    <aside
+        :class="{'close': !isSidebarOpen}">
         <el-menu
             :default-openeds="['0']"
             :default-active="defaultActive"
             router
             unique-opened
+            :collapse="!isSidebarOpen"
             background-color="#545c64"
             text-color="#fff">
             <el-submenu 
@@ -31,6 +33,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
     data () {
         return {
@@ -79,8 +83,14 @@ export default {
     },
     methods: {
     },
+    computed: {
+        ...mapState({
+            isSidebarOpen: state => state.global.isSidebarOpen
+        })
+    },
     mounted () {
         this.defaultActive = this.$route.fullPath;
+        log(this)
     }
 }
 </script>
@@ -92,6 +102,7 @@ aside{
     .el-menu-item{
         padding-left: 55px!important
     }
+    &.close{width: 66px}
 }
 .el-menu{
     border-color: $background;
